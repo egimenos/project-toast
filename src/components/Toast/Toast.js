@@ -7,8 +7,6 @@ import {
   X,
 } from "react-feather";
 
-import VisuallyHidden from "../VisuallyHidden";
-
 import styles from "./Toast.module.css";
 
 const ICONS_BY_VARIANT = {
@@ -29,9 +27,13 @@ function Toast({ onClose, variant = "notice", children }) {
         <ToastIcon icon={ICONS_BY_VARIANT[variant]} />
       </div>
       <p className={styles.content}>{children}</p>
-      <button onClick={onClose} className={styles.closeButton}>
+      <button
+        aria-label="Dismiss message"
+        aria-live="off"
+        onClick={onClose}
+        className={styles.closeButton}
+      >
         <X size={24} />
-        <VisuallyHidden>Dismiss message</VisuallyHidden>
       </button>
     </div>
   );

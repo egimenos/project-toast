@@ -5,12 +5,16 @@ import styles from "./ToastShelf.module.css";
 
 function ToastShelf({ toasts, handleClose }) {
   return (
-    <ol className={styles.wrapper}>
+    <ol
+      className={styles.wrapper}
+      role="region"
+      aria-live="polite"
+      aria-label="Notification"
+    >
       {toasts.length > 0 &&
         toasts.map((toast) => (
-          <li className={styles[toast.variant]}>
+          <li key={toast.id} className={styles[toast.variant]}>
             <Toast
-              key={toast.id}
               onClose={() => handleClose(toast.id)}
               variant={toast.variant}
             >
